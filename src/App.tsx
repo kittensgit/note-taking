@@ -19,10 +19,23 @@ const App: FC = () => {
         setNotes([...notes, newNote]);
     };
 
+    const editNote = (
+        id: INote['id'],
+        name: INote['name'],
+        description: INote['description']
+    ) => {
+        setNotes(
+            notes.map((note) =>
+                note.id === id ? { ...note, name, description } : note
+            )
+        );
+        console.log(notes);
+    };
+
     return (
         <div>
             <FormNote addNote={addNote} />
-            <NoteList notes={notes} />
+            <NoteList notes={notes} editNote={editNote} />
         </div>
     );
 };

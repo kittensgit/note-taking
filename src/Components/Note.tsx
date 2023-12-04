@@ -3,6 +3,7 @@ import { INote } from '../types/types';
 import EditNote from './EditNote';
 
 interface NoteProps {
+    deleteNote: (id: INote['id']) => void;
     editNote: (
         id: INote['id'],
         name: INote['name'],
@@ -11,7 +12,7 @@ interface NoteProps {
     note: INote;
 }
 
-const Note: FC<NoteProps> = ({ note, editNote }) => {
+const Note: FC<NoteProps> = ({ note, editNote, deleteNote }) => {
     const [isEdit, setIsEdit] = useState<boolean>(false);
 
     const handleEdit = () => {
@@ -36,7 +37,9 @@ const Note: FC<NoteProps> = ({ note, editNote }) => {
                     <p>{note.description}</p>
                     <div className="btns">
                         <button onClick={() => setIsEdit(true)}>edit</button>
-                        <button onClick={() => setIsEdit(true)}>delete</button>
+                        <button onClick={() => deleteNote(note.id)}>
+                            delete
+                        </button>
                     </div>
                 </div>
             )}

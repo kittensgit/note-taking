@@ -29,13 +29,20 @@ const App: FC = () => {
                 note.id === id ? { ...note, name, description } : note
             )
         );
-        console.log(notes);
+    };
+
+    const deleteNote = (id: INote['id']) => {
+        setNotes(notes.filter((note) => note.id !== id));
     };
 
     return (
         <div>
             <FormNote addNote={addNote} />
-            <NoteList notes={notes} editNote={editNote} />
+            <NoteList
+                notes={notes}
+                editNote={editNote}
+                deleteNote={deleteNote}
+            />
         </div>
     );
 };

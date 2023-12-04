@@ -3,6 +3,7 @@ import './App.css';
 import FormNote from './Components/FormNote';
 import { INote } from './types/types';
 import { v4 } from 'uuid';
+import NoteList from './Components/NoteList';
 const App: FC = () => {
     const [notes, setNotes] = useState<INote[]>([]);
 
@@ -21,6 +22,7 @@ const App: FC = () => {
     return (
         <div>
             <FormNote addNote={addNote} />
+            <NoteList notes={notes} />
         </div>
     );
 };
